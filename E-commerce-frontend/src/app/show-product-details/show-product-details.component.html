@@ -1,0 +1,94 @@
+<div class="table-container">
+  <mat-card class="product-table-card mat-elevation-z4">
+    <mat-card-title class="table-title">📦 Product Details</mat-card-title>
+
+    <mat-form-field appearance="outline" class="w-100">
+  <mat-label> Search any product</mat-label>
+  <input
+    matInput
+    name="searchKey"
+    id="searchKey"
+    placeholder="Search any product"
+    [(ngModel)]="searchKey"
+    (keyup.enter)="searchBykeyword(searchKey)" />
+  <mat-hint>Search any product</mat-hint>
+</mat-form-field>
+
+<div *ngIf="showTable">
+    <table mat-table [dataSource]="productDetails" class="custom-table mat-elevation-z8">
+
+      <!-- Product ID -->
+      <ng-container matColumnDef="Id">
+        <th mat-header-cell *matHeaderCellDef> ID </th>
+        <td mat-cell *matCellDef="let element"> {{element.productId}} </td>
+      </ng-container>
+
+      <!-- Product Name -->
+      <ng-container matColumnDef="Product Name">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.productName}} </td>
+      </ng-container>
+
+      <!-- Description -->
+      <ng-container matColumnDef="Product Description">
+        <th mat-header-cell *matHeaderCellDef> Description </th>
+        <td mat-cell *matCellDef="let element"> {{element.productDescription}} </td>
+      </ng-container>
+
+      <!-- Discounted Price -->
+      <ng-container matColumnDef="Product Discounted Price">
+        <th mat-header-cell *matHeaderCellDef> Discounted Price </th>
+        <td mat-cell *matCellDef="let element"> ₹{{element.productDiscountedPrice}} </td>
+      </ng-container>
+
+      <!-- Actual Price -->
+      <ng-container matColumnDef="Product Actual Price">
+        <th mat-header-cell *matHeaderCellDef> Actual Price </th>
+        <td mat-cell *matCellDef="let element"> ₹{{element.productActualPrice}} </td>
+      </ng-container>
+
+     <!-- Images Column -->
+<ng-container matColumnDef="Images">
+  <th mat-header-cell *matHeaderCellDef> Images </th>
+  <td mat-cell *matCellDef="let element"> 
+    <button mat-raised-button color="accent" class="action-btn edit" (click)="ShowImages(element)">
+      <mat-icon>images</mat-icon> Images
+    </button>
+  </td>
+</ng-container>
+
+
+      <!-- Edit Button -->
+      <ng-container matColumnDef="Edit">
+        <th mat-header-cell *matHeaderCellDef> Edit </th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-raised-button color="accent" class="action-btn edit" (click)="onEditProduct(element.productId)">
+            <mat-icon>edit</mat-icon> Edit
+          </button>
+        </td>
+      </ng-container>
+
+      <!-- Delete Button -->
+      <ng-container matColumnDef="Delete">
+        <th mat-header-cell *matHeaderCellDef> Delete </th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-raised-button color="warn" class="action-btn delete" (click)="onDeleteProduct(element.productId)">
+            <mat-icon>delete</mat-icon> Delete
+          </button>
+        </td>
+      </ng-container>
+
+      <!-- Table Header & Row Definition -->
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    </div>
+
+   <div class="text-center my-4" *ngIf="showLoadMoreProductButton">
+  <button class="btn btn-outline-info btn-lg load-more-btn" type="button" (click)="loadMoreProducts()">
+    <i class="material-icons align-middle me-2">expand_more</i> Load More
+  </button>
+</div>
+
+  </mat-card>
+</div>

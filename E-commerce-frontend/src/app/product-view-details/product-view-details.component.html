@@ -1,0 +1,42 @@
+<div class="container mt-5 product-detail-wrapper">
+  <div class="row">
+    <!-- Left: Product Images Grid -->
+    <div class="col-md-6 mb-4 mb-md-0">
+      <mat-grid-list cols="2" rowHeight="180px" gutterSize="14px">
+        <mat-grid-tile *ngFor="let file of product?.productImages">
+          <img [src]="file.url" alt="Product Image" class="product-image-tile" />
+        </mat-grid-tile>
+      </mat-grid-list>
+    </div>
+
+    <!-- Right: Product Details -->
+    <div class="col-md-6">
+      <div class="product-details-container shadow p-4 rounded">
+        <h1 class="product-title">{{ product?.productName }}</h1>
+
+        <p class="product-description mt-3">
+          <span class="text-muted">Description</span><br />
+          {{ product?.productDescription }}
+        </p>
+
+        <div class="price-section mt-4">
+          <span class="discounted-price">₹{{ product?.productDiscountedPrice }}</span>
+          <span class="actual-price">₹{{ product?.productActualPrice }}</span>
+        </div>
+
+        <div class="buy-button-wrapper mt-5 text-center">
+          <button mat-raised-button color="accent" class="buy-now-button" (click)="buyProduct(product?.productId)">
+            <mat-icon class="icon-left">shopping_cart</mat-icon>
+            Buy Now
+          </button>
+          &nbsp;
+
+          <button mat-raised-button class="add-to-cart-button" (click)="addToCart(product?.productId)">
+    <mat-icon class="icon-left">add_shopping_cart</mat-icon>
+    Add to Cart
+  </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

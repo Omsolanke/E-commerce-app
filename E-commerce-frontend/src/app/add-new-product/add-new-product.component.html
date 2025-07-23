@@ -1,0 +1,43 @@
+<div class="product-form-container">
+  <div class="form-card">
+    <h2> 🛒Add New Product</h2>
+
+    <form #productForm="ngForm">
+
+      <input type="text" placeholder="Product Name" name="productName" [(ngModel)]="product.productName" required />
+      <textarea rows="3" placeholder="Product Description" name="productDescription" [(ngModel)]="product.productDescription" required></textarea>
+
+      <input type="number" placeholder="Discounted Price" name="productDiscountedPrice" [(ngModel)]="product.productDiscountedPrice" required />
+      <input type="number" placeholder="Actual Price" name="productActualPrice" [(ngModel)]="product.productActualPrice" required />
+
+      <!-- Drop Zone -->
+      <div
+        class="drop-zone"
+        [class.drop-zone-hover]="isDragOver"
+        (drop)="onDrop($event)"
+        (dragover)="onDragOver($event)"
+        (dragleave)="onDragLeave($event)"
+        (click)="fileInput.click()"
+      >
+        <p>Drag & Drop product images here or <span>click to browse</span></p>
+        <input type="file" hidden #fileInput (change)="onFileSelected($event)" multiple />
+      </div>
+
+      <!-- Image Preview -->
+      <div class="preview-grid" *ngIf="productImages.length > 0">
+        <div class="preview-card" *ngFor="let image of productImages; let i = index">
+          <img [src]="image.url" alt="preview" />
+          <button type="button" class="remove-btn" (click)="removeImage(i)">×</button>
+        </div>
+      </div>
+
+      <!-- Buttons -->
+      <div class="btn-group">
+        <button type="button" class="clear-btn" (click)="clearForm(productForm)">Clear</button>
+        <button type="submit" *ngIf="isNewProduct" class="submit-btn" (click)="addProduct(productForm)">Add Product</button>
+        <button type="submit" *ngIf="!isNewProduct" class="submit-btn" (click)="addProduct(productForm)">Update Product</button>
+      </div>
+
+    </form>
+  </div>
+</div>

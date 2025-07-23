@@ -1,0 +1,64 @@
+<div class="container mt-5 product-list-container">
+ 
+
+<mat-form-field appearance="outline" class="w-100">
+  <mat-label> Search any product</mat-label>
+  <input
+    matInput
+    name="searchKey"
+    id="searchKey"
+    placeholder="Search any product"
+    [(ngModel)]="searchKey"
+    (keyup.enter)="searchBykeyword(searchKey)" />
+  <mat-hint>Search any product</mat-hint>
+</mat-form-field>
+
+
+
+  <!-- Product Grid -->
+  <div class="row g-4">
+    <div class="col-sm-6 col-md-4 col-lg-3" *ngFor="let p of productDetails">
+      <mat-card class="product-card" appearance="outlined">
+        <div class="image-wrapper">
+          <img
+            mat-card-image
+            [src]="p.productImages[0].url"
+            alt="{{ p.productName }}"
+            class="product-image"
+          />
+        </div>
+
+        <mat-card-content>
+          <h3 class="product-name">{{ p.productName }}</h3>
+          <p class="product-description">{{ p.productDescription }}</p>
+          <div class="product-pricing">
+            <span class="discounted-price">₹{{ p.productDiscountedPrice }}</span>
+            <span class="original-price">₹{{ p.productActualPrice }}</span>
+          </div>
+        </mat-card-content>
+
+        <mat-card-actions>
+          <button
+            mat-raised-button
+            color="primary"
+            class="view-button"
+            (click)="showProductDetails(p.productId)"
+          >
+            <mat-icon class="icon-spacing">visibility</mat-icon>
+            View Details
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+
+  <!-- Load More Button -->
+  <div class="text-center mt-5 mb-5" *ngIf="showLoadButton">
+    <button mat-raised-button color="primary" type="button" (click)="loadMoreProducts()">
+      <span>🔄 Load More</span>
+    </button>
+  </div>
+</div>
+
+
+

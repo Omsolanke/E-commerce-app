@@ -1,0 +1,110 @@
+.table-container {
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+  background-color: #f0f4f8;
+}
+
+.product-table-card {
+  width: 100%;
+  max-width: 1200px;
+  border-radius: 16px;
+  padding: 30px;
+  background: linear-gradient(to right, #ffffff, #f8f9fa);
+}
+
+.table-title {
+  font-size: 26px;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.custom-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.mat-header-cell {
+  background-color: #1976d2;
+  color: #fff;
+  font-weight: bold;
+}
+
+.mat-cell {
+  background-color: #ffffff;
+  color: #333;
+}
+
+.mat-row:hover {
+  background-color: #f1f1f1;
+  transition: background-color 0.3s ease;
+}
+
+.action-btn {
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 14px;
+  text-transform: capitalize;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.edit {
+  background-color: #5c6bc0;
+  color: white;
+}
+
+.edit:hover {
+  background-color: #3f51b5;
+}
+
+.delete {
+  background-color: #e57373;
+  color: white;
+}
+
+.delete:hover {
+  background-color: #d32f2f;
+}
+.action-btn.image-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 500;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+.action-btn.image-btn:hover {
+  background-color: #1976d2;
+  color: #fff;
+}
+.load-more-btn {
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  border-width: 2px;
+  border-radius: 8px;
+  background-color: #121212;
+  color: #00f0ff;
+  box-shadow: 0 0 8px #00f0ff33;
+  transition: all 0.3s ease;
+}
+
+.load-more-btn:hover {
+  background-color: #00f0ff;
+  color: #121212;
+  box-shadow: 0 0 12px #00f0ff88, 0 0 6px #00f0ff88 inset;
+  transform: scale(1.03);
+}
+
+.load-more-btn i {
+  font-size: 20px;
+}

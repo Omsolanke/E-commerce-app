@@ -1,0 +1,116 @@
+<div class="container my-5">
+  <div class="card shadow-lg border-0 rounded-4 p-4">
+    <div class="row g-4">
+      
+      <!-- Left: Order Form -->
+      <div class="col-md-6">
+        <h4 class="mb-4 fw-bold text-primary">
+          📝 Shipping Details
+        </h4>
+        <form #orderForm="ngForm" (ngSubmit)="createTransactionAndPlaceOrder(orderForm)">
+          <mat-form-field appearance="outline" class="w-100 mb-3">
+            <mat-label>Full Name</mat-label>
+            <input
+              matInput
+              placeholder="Enter your full name"
+              name="fullName"
+              [(ngModel)]="orderDetails.fullName"
+              required
+            />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="w-100 mb-3">
+            <mat-label>Full Address</mat-label>
+            <textarea
+              matInput
+              placeholder="Enter your full address"
+              name="fullAddress"
+              [(ngModel)]="orderDetails.fullAddress"
+              required
+              rows="3"
+            ></textarea>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="w-100 mb-3">
+            <mat-label>Contact Number</mat-label>
+            <input
+              matInput
+              type="tel"
+              placeholder="Enter your contact number"
+              name="contactNumber"
+              [(ngModel)]="orderDetails.contactNumber"
+              required
+            />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="w-100 mb-4">
+            <mat-label>Alternate Contact Number</mat-label>
+            <input
+              matInput
+              type="tel"
+              placeholder="Enter alternate contact number"
+              name="alternateContactNumber"
+              [(ngModel)]="orderDetails.alternateContactNumber"
+            />
+          </mat-form-field>
+
+          <div class="text-end">
+            <button
+              mat-raised-button
+              color="primary"
+              type="submit"
+              [disabled]="!orderForm.valid"
+              class="px-4 py-2 fw-bold"
+            >
+              🛒 Place Order
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Right: Billing Section -->
+      <div class="col-md-6 bg-light rounded-3 p-4 shadow-sm">
+        <h4 class="mb-4 fw-bold text-success">🧾 Billing Summary</h4>
+        <div class="table-responsive">
+          <table class="table table-bordered table-striped align-middle text-center">
+            <thead class="table-secondary">
+              <tr>
+                <th>Product</th>
+                <th>Price ₹</th>
+                <th>Qty</th>
+                <th>Total ₹</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let product of productDetails">
+                <td>{{ product.productName }}</td>
+                <td>{{ product.productDiscountedPrice }}</td>
+                <td>
+                  <select
+                    #quantity
+                    class="form-select"
+                    [ngModel]="getQuantityForProduct(product.productId)"
+                    (change)="onQuantityChanged(+quantity.value, product.productId)"
+                  >
+                    <option [value]="1">1</option>
+                    <option [value]="2">2</option>
+                    <option [value]="3">3</option>
+                  </select>
+                </td>
+                <td>
+                  {{ getCalculatedPrice(product.productId, product.productDiscountedPrice) }}
+                </td>
+              </tr>
+              <tr class="table-primary fw-bold">
+                <td colspan="2"></td>
+                <td>Grand Total</td>
+                <td>₹{{ getCalculatedGrandTotal() }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

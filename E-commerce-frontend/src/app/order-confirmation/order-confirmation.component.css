@@ -1,0 +1,18 @@
+.thank-you-container {
+  background: linear-gradient(to right, #f8f9fa, #e0f7fa);
+}
+
+.card {
+  animation: fadeInUp 0.8s ease-in-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

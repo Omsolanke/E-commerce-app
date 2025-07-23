@@ -1,0 +1,53 @@
+<div class="cart-container mt-5">
+  <h2 class="cart-title">🛒 Your Shopping Cart</h2>
+
+  <div class="table-wrapper">
+    <table mat-table [dataSource]="cartDetails" class="mat-elevation-z8 cart-table">
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="Name">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let element"> {{ element.product.productName }} </td>
+      </ng-container>
+
+      <!-- Description Column -->
+      <ng-container matColumnDef="Description">
+        <th mat-header-cell *matHeaderCellDef> Description </th>
+        <td mat-cell *matCellDef="let element"> {{ element.product.productDescription }} </td>
+      </ng-container>
+
+      <!-- Price Column -->
+      <ng-container matColumnDef="Price">
+        <th mat-header-cell *matHeaderCellDef> Price </th>
+        <td mat-cell *matCellDef="let element"> ₹{{ element.product.productActualPrice }} </td>
+      </ng-container>
+
+      <!-- Discounted Price Column -->
+      <ng-container matColumnDef="Discounted Price">
+        <th mat-header-cell *matHeaderCellDef> Discounted Price </th>
+        <td mat-cell *matCellDef="let element" class="discounted-price">
+          ₹{{ element.product.productDiscountedPrice }}
+        </td>
+      </ng-container>
+
+
+      <ng-container matColumnDef="Action">
+        <th mat-header-cell *matHeaderCellDef> Action </th>
+        <td mat-cell *matCellDef="let element">
+         <button mat-raised-button color="warn" (click)="delete(element.cartId)"> Delete</button>
+        </td>
+      </ng-container>
+
+      <!-- Table Rows -->
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+
+  <div class="checkout-container">
+    <button  (click)="checkout()" color="primary" class="checkout-button">
+      <mat-icon>shopping_bag</mat-icon>
+      &nbsp;Checkout
+    </button>
+  </div>
+</div>

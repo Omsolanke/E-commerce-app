@@ -1,0 +1,46 @@
+<div class="container d-flex justify-content-center align-items-center mt-5">
+  <mat-card class="register-card mat-elevation-z8">
+    <mat-card-header>
+      <div mat-card-avatar class="register-avatar">
+        <mat-icon class="icon-xl">account_circle</mat-icon>
+      </div>
+      <mat-card-title class="text-center w-100">Create an Account</mat-card-title>
+      <mat-card-subtitle class="text-center w-100">Join us and explore more</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <form #registerForm="ngForm" (ngSubmit)="registerUser(registerForm)" autocomplete="off">
+        <div class="form-grid">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label><mat-icon>person</mat-icon> Username</mat-label>
+            <input matInput ngModel name="userName" placeholder="Your username" required>
+            <mat-hint>Choose a unique username</mat-hint>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label><mat-icon>badge</mat-icon> First Name</mat-label>
+            <input matInput ngModel name="userFirstName" placeholder="Your first name" required>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label><mat-icon>badge</mat-icon> Last Name</mat-label>
+            <input matInput ngModel name="userLastName" placeholder="Your last name" required>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label><mat-icon>lock</mat-icon> Password</mat-label>
+            <input matInput [type]="hidePassword ? 'password' : 'text'" ngModel name="userPassword" required>
+            <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword" type="button">
+              <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+            </button>
+            <mat-hint>Keep your password secure</mat-hint>
+          </mat-form-field>
+        </div>
+
+        <button type="submit" mat-raised-button color="accent" class="w-100 mt-3">
+          <mat-icon>person_add</mat-icon> Register
+        </button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

@@ -1,0 +1,47 @@
+.bg-gradient-primary {
+  background: linear-gradient(90deg, #4b6cb7, #182848);
+}
+
+.navbar-brand {
+  letter-spacing: 1px;
+}
+
+.nav-link:hover {
+  color: #ffc107 !important;
+  transition: color 0.3s;
+}
+
+.active-link {
+  font-weight: bold;
+  color: #ffc107 !important;
+  border-bottom: 2px solid #ffc107;
+}
+.navbar {
+  background: linear-gradient(to right, #283e51, #485563);
+}
+
+.navbar-brand {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.navbar .btn-light {
+  background-color: #f8f9fa;
+  border: none;
+  font-weight: 500;
+}
+
+.navbar .btn-light:hover {
+  background-color: #e2e6ea;
+  color: #007bff;
+}
+
+.navbar .btn-danger {
+  font-weight: bold;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.navbar .btn-danger:hover {
+  background-color: #c82333;
+}
